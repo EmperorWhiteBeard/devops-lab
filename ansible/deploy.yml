@@ -1,0 +1,32 @@
+---
+- name: Deploy Docker container
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Ensure Docker is running
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Pull Docker image from Docker Hub
+      community.docker.docker_image:
+        name: mizhabnp/devops-lab
+        tag: latest
+        source: pull
+
+    - name: Remove existing container if any
+      community.docker.docker_container:
+        name: devops-lab
+        state: absent
+      ignore_errors: yes
+
+    - name: Run the container
+      community.docker.docker_container:
+        name: devops-lab
+        image: mizhabnp/devops-lab:latest
+        state: started
+        ports:
+          - "80:80"
+        restart_policy: always
