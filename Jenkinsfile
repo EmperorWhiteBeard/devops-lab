@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat "docker build -t %IMAGE_NAME%:%IMAGE_TAG% ."
+                sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
                 echo "Docker image built successfully"
             }
         }
@@ -33,8 +33,8 @@ pipeline {
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
-                    bat "docker login -u %DOCKER_USER% -p %DOCKER_PASS%"
-                    bat "docker push %IMAGE_NAME%:%IMAGE_TAG%"
+                    sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
+                    sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
                 }
             }
         }
@@ -42,7 +42,7 @@ pipeline {
 
     post {
         success {
-            echo "Pipeline completed successfully! Site is live at http://3.108.66.66"
+            echo "Pipeline completed! Site is live at http://3.108.66.66"
         }
         failure {
             echo "Pipeline failed. Check logs above."
