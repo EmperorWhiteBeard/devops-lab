@@ -1,10 +1,10 @@
-# 🚀 DevOps Pipeline Lab — Containerized Web Deployment
+#  DevOps Pipeline Lab — Containerized Web Deployment
 
 A hands-on DevOps project demonstrating a complete CI/CD pipeline using **Git, Docker, Terraform, Ansible, and Jenkins** to deploy a containerized web application on AWS.
 
 ---
 
-## 🏗️ Architecture Overview
+##  Architecture Overview
 
 ```
 Developer (Local Machine)
@@ -28,13 +28,13 @@ Developer (Local Machine)
                   (Pull & Run Container)
                         │
                         ▼
-              🌐 Live Website on AWS
+                Live Website on AWS
               http://3.108.66.66
 ```
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Tool | Purpose |
 |------|---------|
@@ -49,7 +49,7 @@ Developer (Local Machine)
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 devops-lab/
@@ -68,7 +68,7 @@ devops-lab/
 
 ---
 
-## 📋 Part 1 — Git & Docker
+##  Part 1 — Git & Docker
 
 ### What it does
 Packages a static HTML page inside an Nginx container.
@@ -99,7 +99,7 @@ docker push mizhabnp/devops-lab:latest
 
 ---
 
-## 📋 Part 2 — Terraform & AWS
+##  Part 2 — Terraform & AWS
 
 ### What it does
 Provisions an AWS EC2 instance with Docker pre-installed via a user data script.
@@ -125,7 +125,7 @@ public_ip = "3.108.66.66"
 
 ---
 
-## 📋 Part 3 — Ansible
+##  Part 3 — Ansible
 
 ### What it does
 SSHs into the EC2 instance, pulls the Docker image from Docker Hub, and runs the container.
@@ -155,7 +155,7 @@ ansible-playbook -i inventory.ini deploy.yml
 
 ---
 
-## 📋 Part 4 — Jenkins CI/CD Pipeline
+##  Part 4 — Jenkins CI/CD Pipeline
 
 ### What it does
 Automates the entire build and push process on every GitHub commit.
@@ -186,7 +186,7 @@ Then open `http://localhost:8090` and configure a Pipeline job pointing to this 
 
 ---
 
-## ✅ Success Criteria
+##  Success Criteria
 
 - [x] Repository with clean commit history
 - [x] Docker image builds and runs locally on port 8080
@@ -200,7 +200,7 @@ Then open `http://localhost:8090` and configure a Pipeline job pointing to this 
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Git, Docker Desktop
@@ -233,7 +233,7 @@ echo "Site is live at http://$(terraform -chdir=../app/terraform output -raw pub
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 **Mizhab Mujeeb NP**
 - GitHub: [@EmperorWhiteBeard](https://github.com/EmperorWhiteBeard)
